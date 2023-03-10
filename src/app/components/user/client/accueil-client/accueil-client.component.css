@@ -1,0 +1,67 @@
+/* Debut header */
+
+header{
+    background-color: var(--yellow);
+}
+
+
+.shadow{
+    background-color: var(--yellow) !important;
+    width: 280px;
+    color: var(--white) !important;
+} 
+
+
+.div-sidebar a{
+    color: var(--white) !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    color: var(--white);
+    background-color: rgb(50, 46, 46);
+}
+
+.nav-pills .nav-link:hover, .nav-pills .show>.nav-link:hover  {
+    color: var(--white);
+    background-color: rgb(50, 46, 46);
+}
+
+.div-sidebar a{
+    color: var(--white) !important;
+}
+
+.div-sidebar li{
+    border-bottom: 10px solid var(--white);
+}
+
+/* Fin header */
+
+
+
+/* Debut Sidebar */
+
+i{
+    color: var(--white);
+    font-size: 25px;
+}
+
+.sidebar2{
+    background-color: var(--yellow);
+}
+
+.sidebar2 li{
+    border-bottom: 1px solid white;
+    width: 100%;
+    
+}
+
+
+.nav-link {
+    color: var(--white);
+}
+
+.first-nav{
+    border-top: 1px solid white;
+}
+
+/* Fin Sidebar */

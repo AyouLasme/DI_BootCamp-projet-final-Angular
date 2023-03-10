@@ -1,0 +1,92 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-outline-light plus" data-bs-toggle="modal" data-bs-target="#publicationModal"><i
+                        class="bi bi-plus-square"></i>Publier une annonce</button>
+            </div>
+
+            <!-- Debut Modal publication -->
+
+            <div class="modal fade" id="publicationModal" tabindex="-1" aria-labelledby="publicationModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="publicationModalLabel">Publier une annonce pour votre recherche de couturier</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Fermer"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Formulaire de publication -->
+                            <form id="publicationForm">
+                                <div>
+                                    <img src="{{url}}" alt="" *ngIf="!!url" class="imageProfil m-2">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="imagesInput" class="form-label">Ajouter des images</label>
+                                    <input type="file" (change)="uploadFile($event)" class="form-control load" id="imagesInput" multiple required>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="descriptionInput" class="form-label">Description de votre modèle</label>
+                                    <textarea class="form-control" id="descriptionInput" rows="3" required></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <label for="dateInput" class="form-label">Date de retrait</label>
+                                        <input type="date" class="form-control" id="dateInput" required>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <label for="heureInput" class="form-label">Heure de retrait</label>
+                                        <input type="time" class="form-control" id="heureInput" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btnSubmit">Publier</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Fin modal publication -->
+        </div>
+
+
+        <div class="tableau">
+            <table class="table caption-top" id="tab">
+                <caption>Liste des coutures effectuées</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>

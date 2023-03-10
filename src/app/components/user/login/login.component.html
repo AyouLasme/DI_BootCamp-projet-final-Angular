@@ -1,0 +1,25 @@
+<div class="card bg-dark card-login">
+    <div class="card-body text-white text-center">
+        <form #userForm="ngForm" (ngSubmit)="connexionUser()">
+            <div class=" ">
+                <i class="bi bi-person person"></i>
+    
+                <div class="form-outline form-white mb-4">
+                    <input type="email" id="email" name="email" [(ngModel)]="user.email" placeholder="email" />
+                </div>
+    
+                <div class="form-outline form-white mb-2">
+                    <input type="password" id="password" name="password" [(ngModel)]="user.password" placeholder="Password" />
+                </div>
+    
+                <p class="small"><a class="text-white-50" href="#!">Forgot password?</a></p>
+    
+                <button class="btn btn-outline-light btn-lg px-3" type="submit">Login</button>
+            </div>
+            <div>
+                <p>Don't have an account? <a href="#!" class="text-white-50 fw-bold" data-bs-toggle="modal" data-bs-target="#inscriptionModal">Sign Up</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

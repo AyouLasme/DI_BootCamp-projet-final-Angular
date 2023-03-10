@@ -1,0 +1,71 @@
+
+/* Debut section corps */
+header{
+    background-color: var(--yellow);
+}
+
+.home{
+    background-color: var(--yellow);
+}
+
+header ul.menu .nav-item:hover{
+    border: 1px solid var(--white);
+}
+
+header ul.menu .nav-item {
+    font-size: 20px;
+} 
+
+.centre{
+    width: 80%;
+}
+
+.person{
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.card {
+    
+    background-color: var(--yellow);  
+}
+
+.card-login{
+    margin-top: 70px;
+}
+
+.carousel-inner img{
+    width: 350px;
+    height: 500px;
+}
+
+/* Debut modal */
+.inscription{
+    background-color: var(--yellow) !important;
+    
+}
+
+/* Fin modal */
+
+
+/* Fin section corps */
+
+/* Debut gestion de la responsivité */
+
+@media screen and (max-width: 768px) {
+    .slide {
+      display: none;
+    }
+
+    .centre{
+        padding-bottom: 20px;
+    }
+}
+  
+/* Fin gestion de la responsivité */
+
+
+  
+  
+  
+  

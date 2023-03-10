@@ -1,0 +1,66 @@
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" id="logotaylor">
+                <img src="assets/imgs/LOGO/TAYLOR2.png" alt="Logo" class="d-inline-block align-text-top">
+            </a>
+
+            <div class="dropdown ms-auto me-4">
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong>
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i>Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-outline-light">Logout</button>
+        </div>
+    </nav>
+</header>
+<!-- Fin header -->
+
+
+<!-- Debut Sidebar -->
+<div class="container-fluid ">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar2">
+            <div class="d-flex flex-column align-items-center align-items-sm-start text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active first-nav">
+                            <i class="fs-5 bi bi-plus-square"></i> <span class="ms-3 d-none d-sm-inline">Historique des Publications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link ">
+                            <i class="fs-5 bi bi-chat-left"></i> <span class="ms-3 d-none d-sm-inline">Message</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">
+                            <i class="fs-5 bi bi-hourglass-split"></i> <span class="ms-3 d-none d-sm-inline">Suivie des commandes</span></a>
+                    </li>
+                    
+                    <li>
+                        <a href="#" class="nav-link ">
+                            <i class="fs-5 bi bi-question-square"></i> <span class="ms-3 d-none d-sm-inline">Assistance</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                
+            </div>
+        </div>
+        <div class="col py-3" >
+          <app-publication></app-publication>
+        </div>
+    </div>
+</div>
+
+<!-- Fin Sidebar -->
+
+

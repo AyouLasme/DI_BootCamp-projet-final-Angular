@@ -1,0 +1,148 @@
+<section>
+  <div class="container profil">
+    <div class="card">
+      <form [formGroup]="form">
+        <h4 class="mt-2">Completer votre profil</h4>
+        <hr>
+        <div>
+          <img src="{{url}}" alt="" *ngIf="!!url" class="imageProfil m-2">
+          <div class="input-group m-2">
+            <input type="file" (change)="uploadFile($event)" class="form-control load" id="inputPhoto" accept="image/*">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="m-2">
+            <input type="text" placeholder="Adresse" required>
+          </div>
+          <div class="m-2">
+            <input type="text" placeholder="Ville" required>
+          </div>
+          <div class="m-2">
+            <input type="text" placeholder="Commune" required>
+          </div>
+          <div class="m-2">
+            <label for="" class="me-2">Categorie</label>
+            <select name="" id="">
+              <option value="">Couture simple</option>
+              <option value="">Haute Couture</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="competence" class="ms-2">Compétence</label>
+            
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-4 form-check">
+                <input class="form-check-input" type="checkbox" formControlName="tout" id="tout"
+                  (change)="onChangeTout($event)">
+                <label class="form-check-label" for="tout">
+                  Tout
+                </label>
+              </div>
+
+              <div class="col-6 form-check">
+                <input class="form-check-input" type="checkbox" formControlName="homme" id="homme" (change)="onChange()">
+                <label class="form-check-label" for="homme">
+                  Homme
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-4 form-check">
+                <input class="form-check-input" type="checkbox" formControlName="femme" id="femme" (change)="onChange()">
+                <label class="form-check-label" for="femme">
+                  Femme
+                </label>
+              </div>
+              <div class="col-6 form-check">
+                <input class="form-check-input" type="checkbox" formControlName="enfant" id="enfant"
+                  (change)="onChange()">
+                <label class="form-check-label" for="enfant">
+                  Enfant
+                </label>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+    <button type="submit" class="btn btn-primary m-2 btnSubmit" routerLink="">Enregister</button>
+    </form>
+  </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-4 m-2">
+      <label for="">Categorie</label>
+      <select name="" id="" class="form-control" required>
+          <option value="">Couture simple</option>
+          <option value="">Haute Couture</option>
+      </select>
+  </div>
+  <div class="col-8 form-group">
+      <label for="competence" class="ms-2">Compétence:</label>
+
+      <div class="row">
+          <div class="col-2"></div>
+          <div class="col-4 form-check">
+              <input class="form-check-input" type="checkbox" formControlName="tout" id="tout"
+                  (change)="onChangeTout($event)">
+              <label class="form-check-label" for="tout">
+                  Tout
+              </label>
+          </div>
+
+          <div class="col-6 form-check">
+              <input class="form-check-input" type="checkbox" formControlName="homme"
+                  id="homme" (change)="onChange()">
+              <label class="form-check-label" for="homme">
+                  Homme
+              </label>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-2"></div>
+          <div class="col-4 form-check">
+              <input class="form-check-input" type="checkbox" formControlName="femme"
+                  id="femme" (change)="onChange()">
+              <label class="form-check-label" for="femme">
+                  Femme
+              </label>
+          </div>
+          <div class="col-6 form-check">
+              <input class="form-check-input" type="checkbox" formControlName="enfant"
+                  id="enfant" (change)="onChange()">
+              <label class="form-check-label" for="enfant">
+                  Enfant
+              </label>
+          </div>
+      </div>
+
+  </div>
+</div>
