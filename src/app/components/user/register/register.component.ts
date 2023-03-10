@@ -55,7 +55,7 @@ export class RegisterComponent {
       this.serviceUser.register(this.user).subscribe({
         next: data => {
           console.log(data);
-          this.router.navigate(['/accueil']);
+           //this.router.navigate(['/login']);
         },
         error: error => {
           console.log(error);
@@ -137,6 +137,22 @@ export class RegisterComponent {
 
 
 
+  // public onSubmit(): void {
+  //   // Vous pouvez utiliser la valeur de selectedChoice pour ouvrir la page appropriée.
+  //   switch (this.user.role) {
+  //     case 'customer':
+  //       this.router.navigate(['/Accueil']);
+  //       break;
+  //     case 'taylor':
+  //       this.router.navigate(['/accueilCouturier']);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
+
+
+
 
 
   form: any;
@@ -155,6 +171,7 @@ export class RegisterComponent {
     this.getAllCity();
     this.getAllCompetence();
   }
+
 
 
 

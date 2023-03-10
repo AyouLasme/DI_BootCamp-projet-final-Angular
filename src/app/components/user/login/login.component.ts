@@ -20,7 +20,17 @@ export class LoginComponent {
     this.serviceUser.getUser({email: this.user.email, password: this.user.password}).subscribe({
       next: data =>{
         console.log(data);
-        this.router.navigate(['/accueil']);
+        let dataUser:User = data as User;
+        switch (dataUser.role.toLowerCase()) {
+          case 'customer':
+            this.router.navigate(['/Accueil']);
+            break;
+          case 'taylor':
+            this.router.navigate(['/accueilCouturier']);
+            break;
+        }
+
+        //this.router.navigate(['/accueil']);
       },
       error: error => {
         console.log(error);

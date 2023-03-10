@@ -19,4 +19,5 @@ export class PublicationComponent {
       console.log(this.url);
     }
   }
+  
 }
