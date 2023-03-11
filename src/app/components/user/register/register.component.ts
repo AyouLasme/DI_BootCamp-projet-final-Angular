@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ProfilCouturierComponent } from '../profil-couturier/profil-couturier.component';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -7,7 +6,6 @@ import { User } from 'src/app/models/user';
 import { TownService } from '../../../services/town.service';
 import { CityService } from '../../../services/city.service';
 import { Town } from 'src/app/models/town';
-import { OnInit } from '@angular/core';
 import { City } from 'src/app/models/city';
 import { Competence } from 'src/app/models/comeptence';
 import { CompetenceService } from '../../../services/competence.service';
@@ -55,7 +53,8 @@ export class RegisterComponent {
       this.serviceUser.register(this.user).subscribe({
         next: data => {
           console.log(data);
-           //this.router.navigate(['/login']);
+          console.log("ok c'est arrive");
+          this.router.navigate(['/login']);
         },
         error: error => {
           console.log(error);

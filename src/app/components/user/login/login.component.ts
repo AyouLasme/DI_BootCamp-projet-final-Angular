@@ -23,7 +23,7 @@ export class LoginComponent {
         let dataUser:User = data as User;
         switch (dataUser.role.toLowerCase()) {
           case 'customer':
-            this.router.navigate(['/Accueil']);
+            this.router.navigate(['/accueil']);
             break;
           case 'taylor':
             this.router.navigate(['/accueilCouturier']);
@@ -34,7 +34,7 @@ export class LoginComponent {
       },
       error: error => {
         console.log(error);
-        alert("connexion echoué,email ou mot de pass incorrect")
+        alert("connexion echoué, email ou mot de pass incorrect")
         
       }
     })
