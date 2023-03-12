@@ -1,0 +1,116 @@
+<!-- Fenêtre modale -->
+<div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inscriptionModalLabel">Nouveau Compte</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire d'inscription -->
+                <form id="inscriptionForm" [formGroup]="form" (ngSubmit)="registerUser()">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-2">
+                                <input type="text" class="form-control" formControlName="lastname" id="nomInput"  placeholder="Nom" required>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <input type="text" class="form-control" formControlName="firstname" id="prenomInput"  placeholder="Prenom" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <select name="" id="" class=" form-control" formControlName="sexe"  required>
+                                <option value="">--sexe</option>
+                                <option value="Feminin">Feminin</option>
+                                <option value="Masculin">Masculin</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-6 mb-2">
+                            <input type="tel" class="form-control" id="telephoneInput" formControlName="tel"  placeholder="Telephone" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <input type="email" class="form-control" id="emailInput" formControlName="email"  placeholder="email" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4 mb-2">
+                            <select id="" class="form-control" formControlName="town"  required>
+                                <option value="">--Ville</option>
+                                <option *ngFor="let town of towns" value="{{town.id}}">{{town.libelle}}</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <select name="city" id="" class="form-control" formControlName="city" required>
+                                <option value="">--Commune</option>
+                                <option *ngFor="let city of cities" value="{{city.id}}">{{city.libelle}}</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <input type="text" class="form-control" id="Adresse" formControlName="Adresse"  placeholder="Adresse" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <input type="password" class="form-control" id="motDePasseInput" formControlName="password"  placeholder="Mot de passe"
+                                required>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <input type="password" class="form-control" formControlName="confirmPassword"  id="confirmPassword" 
+                                placeholder="Confirmer votre mot de passe" required>
+                        </div>
+                    </div>
+
+                    <label for="">Je suis:</label>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-4 mb-2">
+                            <input type="radio" (click)="enableForm($event,'client')" formControlName="role"  class="form-check-input me-1"
+                                id="clientRadio" name="role" value="customer" checked>
+                            <label for="clientRadio" class="form-label">Client</label>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <input type="radio"  (click)="enableForm($event,'couturier')"  class="form-check-input me-1"
+                                id="couturierRadio" name="role" value="taylor" formControlName="role">
+                            <label for="couturierRadio" class="form-label">Couturier</label>
+                        </div>
+                    </div>
+
+                    <div *ngIf="roleCouturierChecked">
+                        <div class="row">
+                            <div class="col-4 m-2">
+                                <label for="">Categorie</label>
+                                <select name="" id="" class="form-control" formControlName="category" required>
+                                    <option value="Couture_simple">Couture simple</option>
+                                    <option value="Haute_Couture">Haute Couture</option>
+                                </select>
+                            </div>
+                            <div class="col-8 form-group">
+                                <label for="competence" class="ms-2">Compétence:</label>
+
+                                <div class="row">
+                                    <div class="col-4 form-check" name="competence" *ngFor="let competence of competences">
+                                        <input class="form-check-input"  type="checkbox" formControlName="tout" id="tout"
+                                            (change)="onChangeTout($event)">
+                                        <label class="form-check-label" for="tout">
+                                            {{competence.title}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btnSubmit">Creer
+                        votre compte
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

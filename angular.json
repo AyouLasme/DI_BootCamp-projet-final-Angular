@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "taylorApp": {
+    "Taylor": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/taylor-app",
+            "outputPath": "dist/taylor",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -22,16 +22,18 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -64,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "taylorApp:build:production"
+              "browserTarget": "Taylor:build:production"
             },
             "development": {
-              "browserTarget": "taylorApp:build:development"
+              "browserTarget": "Taylor:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "taylorApp:build"
+            "browserTarget": "Taylor:build"
           }
         },
         "test": {
@@ -91,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -100,6 +103,6 @@
     }
   },
   "cli": {
-    "analytics": "57b40ac8-c102-4a41-a570-c38cb642814d"
+    "analytics": "2d7b2fff-1091-464d-8681-9bb463f1ea6d"
   }
 }

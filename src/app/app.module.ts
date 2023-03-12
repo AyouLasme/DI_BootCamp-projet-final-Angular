@@ -1,46 +1,74 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/user/home/home.component';
-import { LoginComponent } from './components/user/login/login.component';
-import { RegisterComponent } from './components/user/register/register.component';
-import { AccueilClientComponent } from './components/user/client/accueil-client/accueil-client.component';
-import { AccueilCouturierComponent } from './components/user/couturier/accueil-couturier/accueil-couturier.component';
+import { TaylorHomeComponent } from './components/taylor/taylor-home/taylor-home.component';
+import { TaylorDemandComponent } from './components/taylor/taylor-demand/taylor-demand.component';
+import { TaylorSpaceComponent } from './components/taylor/taylor-space/taylor-space.component';
+import { TaylorMessageComponent } from './components/taylor/taylor-message/taylor-message.component';
+import { TaylorEditProfileComponent } from './components/taylor/taylor-edit-profile/taylor-edit-profile.component';
+import { TaylorProfileComponent } from './components/taylor/taylor-profile/taylor-profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { PublicationComponent } from './components/user/client/publication/publication.component';
-import { NotificationComponent } from './components/user/couturier/notification/notification.component';
-import { DataTablesModule } from 'angular-datatables';
+import { TaylorAssistanceComponent } from './components/taylor/taylor-assistance/taylor-assistance.component';
+import { CustomerAssistanceComponent } from './components/customer/customer-assistance/customer-assistance.component';
+import { CustomerDemandComponent } from './components/customer/customer-demand/customer-demand.component';
+import { CustomerEditProfileComponent } from './components/customer/customer-edit-profile/customer-edit-profile.component';
+import { CustomerHomeComponent } from './components/customer/customer-home/customer-home.component';
+import { CustomerMessageComponent } from './components/customer/customer-message/customer-message.component';
+import { CustomerProfileComponent } from './components/customer/customer-profile/customer-profile.component';
+import { CustomerSpaceComponent } from './components/customer/customer-space/customer-space.component';
+import { CustomerFollowComponent } from './components/customer/customer-follow/customer-follow.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
 
-
-
-
+registerLocaleData(fr);
 
 @NgModule({
   declarations: [
     AppComponent,
+    TaylorHomeComponent,
+    TaylorDemandComponent,
+    TaylorSpaceComponent,
+    TaylorMessageComponent,
+    TaylorEditProfileComponent,
+    TaylorProfileComponent,
+    NotFoundComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AccueilClientComponent,
-    AccueilCouturierComponent,
-    PublicationComponent,
-    NotificationComponent,
-
+    TaylorAssistanceComponent,
+    CustomerAssistanceComponent,
+    CustomerDemandComponent,
+    CustomerEditProfileComponent,
+    CustomerHomeComponent,
+    CustomerMessageComponent,
+    CustomerProfileComponent,
+    CustomerSpaceComponent,
+    CustomerFollowComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    
   ],
-  providers: [],
+  providers: [
+    { provide: NZ_I18N, useValue: fr_FR }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

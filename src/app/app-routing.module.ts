@@ -1,16 +1,51 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/user/home/home.component';
-import { AccueilClientComponent } from './components/user/client/accueil-client/accueil-client.component';
-import { AccueilCouturierComponent } from './components/user/couturier/accueil-couturier/accueil-couturier.component';
+import { TaylorSpaceComponent } from './components/taylor/taylor-space/taylor-space.component';
+import { TaylorProfileComponent } from './components/taylor/taylor-profile/taylor-profile.component';
+import { TaylorMessageComponent } from './components/taylor/taylor-message/taylor-message.component';
+import { TaylorEditProfileComponent } from './components/taylor/taylor-edit-profile/taylor-edit-profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TaylorDemandComponent } from './components/taylor/taylor-demand/taylor-demand.component';
+import { HomeComponent } from './components/home/home.component';
+import { TaylorHomeComponent } from './components/taylor/taylor-home/taylor-home.component';
+import { TaylorAssistanceComponent } from './components/taylor/taylor-assistance/taylor-assistance.component';
+import { CustomerSpaceComponent } from './components/customer/customer-space/customer-space.component';
+import { CustomerProfileComponent } from './components/customer/customer-profile/customer-profile.component';
+import { CustomerMessageComponent } from './components/customer/customer-message/customer-message.component';
+import { CustomerEditProfileComponent } from './components/customer/customer-edit-profile/customer-edit-profile.component';
+import { CustomerAssistanceComponent } from './components/customer/customer-assistance/customer-assistance.component';
+import { CustomerDemandComponent } from './components/customer/customer-demand/customer-demand.component';
+import { CustomerHomeComponent } from './components/customer/customer-home/customer-home.component';
+import { CustomerFollowComponent } from './components/customer/customer-follow/customer-follow.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: HomeComponent},
-  { path: 'accueil', component: AccueilClientComponent },
-  {path: 'accueilCouturier', component: AccueilCouturierComponent }
+  {
+    path: 'taylor-space/:id', component: TaylorSpaceComponent,
+    children: [
+      { path: 'profile', component: TaylorProfileComponent },
+      { path: 'messages', component: TaylorMessageComponent },
+      { path: 'edit-profile', component: TaylorEditProfileComponent },
+      {path: 'assistance', component: TaylorAssistanceComponent},
+      { path: 'commands', component: TaylorDemandComponent },
+      { path: '', component: TaylorHomeComponent },
+    ]
+  },
 
+  {
+    path: 'customer-space/:id', component: CustomerSpaceComponent,
+    children: [
+      {path: 'profile-customer', component: CustomerProfileComponent},
+      {path: 'messages-customer', component: CustomerMessageComponent},
+      {path: 'edit-profile-customer', component: CustomerEditProfileComponent},
+      {path: 'assistance-customer', component: CustomerAssistanceComponent},
+      {path: 'demands-customer', component: CustomerDemandComponent},
+      {path: 'follow-customer', component: CustomerFollowComponent},
+      {path: '', component: CustomerHomeComponent}
+    ]
+  },
 
+  {path: '', component: HomeComponent},
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,40 @@
+
+
+<section>
+    <h3>Ajouter une publication</h3>
+    <div class="card">
+        <div class="card-body">
+            <form id="publicationForm">
+                <div class="row">
+                    <div class="mb-2 col-6">
+                        <label for="titreCommandInput" class="form-label">Titre de la commande</label>
+                        <input type="text" class="form-control" id="titreCommand" required>
+                    </div>
+                    <div class="mb-2 col-6">
+                        <label for="typeCouturedInput" class="form-label">Type de couturier</label>
+                        <select name="typeCouture" class="form-control" id="typeCouture">
+                            <option value="">Couture Simple</option>
+                            <option value="">Haute couture</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="descriptionInput" class="form-label">Description de votre modèle</label>
+                    <textarea class="form-control" id="descriptionInput" rows="3" required></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="dateInput" class="form-label">Date de retrait</label>
+                        <input type="date" class="form-control" id="dateInput" required>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="heureInput" class="form-label">Heure de retrait</label>
+                        <input type="time" class="form-control" id="heureInput" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btnSubmit">Publier</button>
+            </form>
+        </div>
+    </div>
+</section>

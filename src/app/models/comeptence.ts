@@ -4,6 +4,6 @@ export class Competence {
 
     constructor(id = 0, title = ""){
         this.id = id;
-        this.title = this.title;
+        this.title = title;
     }
 }
