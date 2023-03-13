@@ -30,6 +30,8 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ButtonModule} from 'primeng/button';
 
 registerLocaleData(fr);
 
@@ -64,6 +66,8 @@ registerLocaleData(fr);
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MultiSelectModule,
+    ButtonModule
     
   ],
   providers: [

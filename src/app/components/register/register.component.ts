@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { MustMatch } from 'src/app/helpers/validator';
 import { City } from 'src/app/models/city';
 import { Competence } from 'src/app/models/comeptence';
-import { Town } from 'src/app/models/town';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-import { CityService } from 'src/app/services/city.service';
+
 import { CompetenceService } from 'src/app/services/competence.service';
-import { TownService } from 'src/app/services/town.service';
+import { Municipality } from '../../models/municipality';
+import { MunicipalityService } from 'src/app/services/municipality.service';
+import { CityService } from 'src/app/services/city.service';
 
 @Component({
   selector: 'app-register',
@@ -19,15 +20,14 @@ import { TownService } from 'src/app/services/town.service';
 export class RegisterComponent implements OnInit{
   form: FormGroup;
   user: User;
-  towns: Town[];
   cities: City[];
-  ville : string;
+  municipalities: Municipality[];
   commune: string;
   tout: string;
   homme: string;
   femme: string;
   enfant: string
-  competences: Competence[];
+  competencies: Competence[];
 
 
   public role: string;
@@ -36,8 +36,8 @@ export class RegisterComponent implements OnInit{
     private serviceUser: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private townservice: TownService,
-    private cityService: CityService,
+    private municipalityservice: MunicipalityService,
+    private cityservice: CityService,
     private competenceService: CompetenceService
   ) {
     this.user = new User();
@@ -47,13 +47,15 @@ export class RegisterComponent implements OnInit{
 
   // Methode de recuperation des elements du register
   registerUser() {
-    const data = this.form.getRawValue();
-
+    const reponseApresVerification = this.verifyChamp();
+    
     if(this.form.valid) {
-      console.log(JSON.stringify(this.user));
-      this.serviceUser.register(this.form.value as User).subscribe({
+      let data = this.form.value;
+      data.city = {id: this.form.value.city as number, libelle: ''};
+      data.municipality = {id: this.form.value.municipality as number, libelle: ''};
+      console.log("form : ", data);
+      this.serviceUser.register(data).subscribe({
         next: data => {
-          console.log(data);
           this.router.navigate(['/login']);
         },
         error: error => {
@@ -71,13 +73,13 @@ export class RegisterComponent implements OnInit{
 // Methode de verifiaction des champs
   public verifyChamp(): boolean {
     // Vous pouvez utiliser la valeur de role pour ouvrir la page appropriée.
-    if(this.role == "couturier") {
-       if(!!this.user.firstname && !!this.user.lastname && !!this.user.commune && !!this.user.email && !!this.user.adresse && !!this.user.password && !!this.user.tel && !!this.user.ville && !!this.user.category && !!this.competences && !!this.user.verificationPassword) {
+    if(this.role == "taylor") {
+       if(!!this.user.firstname && !!this.user.lastname && !!this.user.municipality && !!this.user.email && !!this.user.adresse && !!this.user.password && !!this.user.tel && !!this.user.city && !!this.user.category && !!this.competencies && !!this.user.verificationPassword) {
         return true
        }
        return false;
     }else{
-      if(!!this.user.firstname && !!this.user.lastname && !!this.user.commune && !!this.user.email && !!this.user.adresse && !!this.user.password && !!this.user.tel && !!this.user.ville && !!this.user.verificationPassword) {
+      if(!!this.user.firstname && !!this.user.lastname && !!this.user.municipality && !!this.user.email && !!this.user.adresse && !!this.user.password && !!this.user.tel && !!this.user.city && !!this.user.verificationPassword) {
         return true
       }
       return false;
@@ -90,11 +92,11 @@ export class RegisterComponent implements OnInit{
 
   // Methode de recuperation des villes
 
-  public getAllTown() {
-    this.townservice.getAll().subscribe({
+  public getAllCity() {
+    this.cityservice.getAll().subscribe({
       next: data => {
         console.log(data);
-        this.towns = data as Town[];
+        this.cities = data as City[];
       },
       error: error => {
         console.log(error);
@@ -110,7 +112,7 @@ export class RegisterComponent implements OnInit{
     this.competenceService.getAll().subscribe({
       next: data => {
         console.log(data);
-        this.competences = data as Competence[];
+        this.competencies = data as Competence[];
       },
       error: error => {
         console.log(error);
@@ -121,11 +123,11 @@ export class RegisterComponent implements OnInit{
 
 
   // Methode de recuperation des communes
-  public getAllCity() {
-    this.cityService.getAll().subscribe({
+  public getAllmunicipality() {
+    this.municipalityservice.getAll().subscribe({
       next: data => {
         console.log(data);
-        this.cities = data as City[];
+        this.municipalities = data as Municipality[];
       },
       error: error => {
         console.log(error);
@@ -149,20 +151,21 @@ export class RegisterComponent implements OnInit{
       password:['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
       confirmPassword: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
       sexe: ['', [Validators.required]],
-      town: ['', [Validators.required]],
+      tel: ['', [Validators.required]],
+      municipality: ['', [Validators.required]],
       city: ['', [Validators.required]],
       role: ['', [Validators.required]],
       adresse: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      competence: ['', [Validators.required]],
+      category: ['', []],
+      competencies: ['', []],
     },
     {
       validator: MustMatch('password', 'confirmPassword')
     }
     );
 
-    this.getAllTown();
     this.getAllCity();
+    this.getAllmunicipality();
     this.getAllCompetence();
   }
 

@@ -1,7 +1,5 @@
 import { Competence } from './comeptence';
 export class User {
-
-
     id: number;
     firstname: string;
     lastname: string;
@@ -15,12 +13,12 @@ export class User {
     category: string;
     galery: string;
     isActive: boolean;
-    ville: string;
-    commune:string;
-    competence: string;
+    city: string;
+    municipality:string;
+    competencies: number[];
     verificationPassword: String;
 
-    constructor(id = 0, firstname = "", lastname = "", email = "", tel = "", password = "", adresse = "", role = "", isAdmin = false, sexe = "", category = "", galery = "", isActive = false,ville = "", commune = "", competence = "", verificationPassword ="") {
+    constructor(id = 0, firstname = "", lastname = "", email = "", tel = "", password = "", adresse = "", role = "", isAdmin = false, sexe = "", category = "", galery = "", isActive = false,city = "", municipality = "", competencies = [], verificationPassword ="") {
         this.id = id;
         this.firstname = firstname;
         this.lastname= lastname;
@@ -34,9 +32,9 @@ export class User {
         this.category= category;
         this.galery= galery;
         this.isActive = isActive;
-        this.ville = ville;
-        this.commune = commune;
-        this.competence = competence;
+        this.city = city;
+        this.municipality = municipality;
+        this.competencies = competencies;
         this.verificationPassword = verificationPassword;
     }
 

@@ -5,6 +5,7 @@ import { ApiRequestService } from './api-request.service';
   providedIn: 'root'
 })
 export class CityService {
+  readonly API_URL = "http://localhost:8081";
 
   constructor(private apiRequestService: ApiRequestService) { }
 

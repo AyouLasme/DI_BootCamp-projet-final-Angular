@@ -1,4 +1,4 @@
-export class Town {
+export class Municipality {
     id: number;
     libelle: string; 
 
