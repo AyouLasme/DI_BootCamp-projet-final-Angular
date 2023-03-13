@@ -17,6 +17,7 @@ import { CustomerAssistanceComponent } from './components/customer/customer-assi
 import { CustomerDemandComponent } from './components/customer/customer-demand/customer-demand.component';
 import { CustomerHomeComponent } from './components/customer/customer-home/customer-home.component';
 import { CustomerFollowComponent } from './components/customer/customer-follow/customer-follow.component';
+import { CustomerHistoriqueDmdComponent } from './components/customer/customer-historique-dmd/customer-historique-dmd.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,7 @@ const routes: Routes = [
       {path: 'edit-profile-customer', component: CustomerEditProfileComponent},
       {path: 'assistance-customer', component: CustomerAssistanceComponent},
       {path: 'demands-customer', component: CustomerDemandComponent},
+      {path: 'historique-customer', component: CustomerHistoriqueDmdComponent},
       {path: 'follow-customer', component: CustomerFollowComponent},
       {path: '', component: CustomerHomeComponent}
     ]

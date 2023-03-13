@@ -22,12 +22,11 @@ export class RegisterComponent implements OnInit{
   user: User;
   cities: City[];
   municipalities: Municipality[];
-  commune: string;
-  tout: string;
-  homme: string;
-  femme: string;
-  enfant: string
   competencies: Competence[];
+  selectedCity : City;
+  selectedMunicipality: Municipality;
+  selectedCompetency: Competence[];
+  
 
 
   public role: string;
@@ -51,8 +50,9 @@ export class RegisterComponent implements OnInit{
     
     if(this.form.valid) {
       let data = this.form.value;
-      data.city = {id: this.form.value.city as number, libelle: ''};
-      data.municipality = {id: this.form.value.municipality as number, libelle: ''};
+      data.city = this.selectedCity;
+      data.municipality = this.selectedMunicipality
+      data.competencies = this.selectedCompetency;
       console.log("form : ", data);
       this.serviceUser.register(data).subscribe({
         next: data => {
@@ -168,43 +168,6 @@ export class RegisterComponent implements OnInit{
     this.getAllmunicipality();
     this.getAllCompetence();
   }
-
-
-
-
-  // Methode de verification du checkbox. Si le champs tout est selectionné tous les autres champs sont desactives 
-
-  onChange() {
-    if (this.form.value.homme && this.form.value.femme) {
-      this.form.patchValue({
-        tout: false
-      });
-    } else if (!this.form.value.homme && !this.form.value.femme && !this.form.value.enfant) {
-      this.form.patchValue({
-        tout: false
-      });
-    }
-  }
-
-  onChangeTout(event) {
-    if (event.target.checked) {
-      this.form.patchValue({
-        homme: true,
-        femme: true,
-        enfant: true
-      });
-    } else {
-      this.form.patchValue({
-        homme: false,
-        femme: false,
-        enfant: false
-      });
-    }
-  }
-
-
-
-
 
 
 

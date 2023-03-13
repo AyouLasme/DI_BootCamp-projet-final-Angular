@@ -32,6 +32,7 @@ import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ButtonModule} from 'primeng/button';
+import { CustomerHistoriqueDmdComponent } from './components/customer/customer-historique-dmd/customer-historique-dmd.component';
 
 registerLocaleData(fr);
 
@@ -56,7 +57,8 @@ registerLocaleData(fr);
     CustomerMessageComponent,
     CustomerProfileComponent,
     CustomerSpaceComponent,
-    CustomerFollowComponent
+    CustomerFollowComponent,
+    CustomerHistoriqueDmdComponent
   ],
   imports: [
     BrowserModule,
