@@ -18,6 +18,7 @@ import { CustomerDemandComponent } from './components/customer/customer-demand/c
 import { CustomerHomeComponent } from './components/customer/customer-home/customer-home.component';
 import { CustomerFollowComponent } from './components/customer/customer-follow/customer-follow.component';
 import { CustomerHistoriqueDmdComponent } from './components/customer/customer-historique-dmd/customer-historique-dmd.component';
+import { CustomerViewCommandeComponent } from './components/customer/customer-view-commande/customer-view-commande.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
       {path: 'demands-customer', component: CustomerDemandComponent},
       {path: 'historique-customer', component: CustomerHistoriqueDmdComponent},
       {path: 'follow-customer', component: CustomerFollowComponent},
+      {path: 'command-view/:id', component: CustomerViewCommandeComponent},
       {path: '', component: CustomerHomeComponent}
     ]
   },

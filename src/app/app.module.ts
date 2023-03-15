@@ -33,6 +33,9 @@ import fr from '@angular/common/locales/fr';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ButtonModule} from 'primeng/button';
 import { CustomerHistoriqueDmdComponent } from './components/customer/customer-historique-dmd/customer-historique-dmd.component';
+import {TableModule} from 'primeng/table';
+import { CustomerViewCommandeComponent } from './components/customer/customer-view-commande/customer-view-commande.component';
+import { TaylorViewCommandeComponent } from './components/taylor/taylor-view-commande/taylor-view-commande.component';
 
 registerLocaleData(fr);
 
@@ -58,7 +61,9 @@ registerLocaleData(fr);
     CustomerProfileComponent,
     CustomerSpaceComponent,
     CustomerFollowComponent,
-    CustomerHistoriqueDmdComponent
+    CustomerHistoriqueDmdComponent,
+    CustomerViewCommandeComponent,
+    TaylorViewCommandeComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ registerLocaleData(fr);
     AppRoutingModule,
     HttpClientModule,
     MultiSelectModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
     
   ],
   providers: [

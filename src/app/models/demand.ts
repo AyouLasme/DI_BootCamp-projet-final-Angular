@@ -1,19 +1,21 @@
 import { Municipality } from "./municipality";
 import { User } from "./user";
+import { Reponse } from './reponse';
 
 export class Demand {
     id: number;
     object: string;
     content: string; 
-    dateRetrait: Date;
-    dateDmd: Date;
-    imageModels: String;
-    municipality: Municipality;
-    receiver: User;
-    sender: User;
+    dateRetrait: string;
+    dateDmd: string;
+    imageModels: string[];
+    municipality: any;
+    sender: any;
     category: string;
+    statut: string;
+ 
 
-    constructor(id = 0, object = "", content = "", dateRetrait = new Date(), dateDmd = new Date(), imageModels = "", municipality = new Municipality(), receiver = new User(), sender = new User(), category = ""){
+    constructor(id = 0, object = "", content = "", dateRetrait = "", dateDmd = "", imageModels = [], municipality : any = {}, sender : any= {}, category = "",statut = ""){
         this.id = id;
         this.object = object;
         this.content = content;
@@ -21,8 +23,8 @@ export class Demand {
         this.dateDmd = dateDmd;
         this.imageModels = imageModels;
         this.municipality = municipality;
-        this.receiver = receiver;
         this.sender = sender;
         this.category = category;
+        this.statut = statut;
     }
 }

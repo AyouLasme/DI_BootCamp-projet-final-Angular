@@ -1,1 +1,57 @@
-<p>customer-historique-dmd works!</p>
+<!-- <p-table [value]="demandList">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Object</th>
+            <th>Description</th>
+            <th>Date et heure de demande</th>
+            <th>Date et heure de recuperation</th>
+            <th>Reponses</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-demande>
+        <tr>
+            <td>{{demande.object}}</td>
+            <td>{{demande.content}}</td>
+            <td>{{demande.dateDmd}}</td>
+            <td>{{demande.dateRetrait}}</td>
+            <td>
+                <button>{{demande.reponses.lengt}}</button>
+            </td>
+            <td>
+                <button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table> -->
+
+<h1>Liste des demandes</h1>
+<div class="card">
+    <p-table [value]="demandList" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>ref</th>
+                <th>Objet</th>
+                <th>Statut</th>
+                <th>Date de retrait</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-demande let-columns="columns">
+            <tr>
+                <td>{{demande.id}}</td>
+                <td>{{demande.object}}</td>
+                <td>
+                    <button>{{demande.statut}}</button>
+                </td>
+                <td>{{demande.dateRetrait}}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-success p-button-outlined  m-2" (click)="viewCommande(demande.id)"></button>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-outlined  m-2"></button>
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined  m-2"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

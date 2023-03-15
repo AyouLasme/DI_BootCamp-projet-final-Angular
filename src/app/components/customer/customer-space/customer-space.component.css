@@ -1,5 +1,11 @@
 /* Debut header */
 
+/* .corps{
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+} */
+
 header{
     background-color: var(--yellow);
 }

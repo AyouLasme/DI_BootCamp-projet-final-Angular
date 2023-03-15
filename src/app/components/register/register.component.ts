@@ -8,9 +8,10 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { CompetenceService } from 'src/app/services/competence.service';
-import { Municipality } from '../../models/municipality';
 import { MunicipalityService } from 'src/app/services/municipality.service';
 import { CityService } from 'src/app/services/city.service';
+import { Municipality } from 'src/app/models/municipality';
+
 
 @Component({
   selector: 'app-register',
@@ -23,9 +24,6 @@ export class RegisterComponent implements OnInit{
   cities: City[];
   municipalities: Municipality[];
   competencies: Competence[];
-  selectedCity : City;
-  selectedMunicipality: Municipality;
-  selectedCompetency: Competence[];
   
 
 
@@ -46,47 +44,28 @@ export class RegisterComponent implements OnInit{
 
   // Methode de recuperation des elements du register
   registerUser() {
-    const reponseApresVerification = this.verifyChamp();
+    console.log(this.form.valid);
     
     if(this.form.valid) {
       let data = this.form.value;
-      data.city = this.selectedCity;
-      data.municipality = this.selectedMunicipality
-      data.competencies = this.selectedCompetency;
+      data.city = data.city[0];
+      data.municipality = data.municipality[0];
+      data.competencies = data.competencies[0];
       console.log("form : ", data);
-      this.serviceUser.register(data).subscribe({
+      this.serviceUser.register(data as User).subscribe({
         next: data => {
-          this.router.navigate(['/login']);
+          this.form.clearAsyncValidators();
+          this.router.navigate(['/']);
         },
         error: error => {
           console.log(error);
-          alert(error.message)
         }
       })
     }else{
-      alert("Veuillez renseigner tous les champs");
+      
     }
   
   }
-
-
-// Methode de verifiaction des champs
-  public verifyChamp(): boolean {
-    // Vous pouvez utiliser la valeur de role pour ouvrir la page appropriée.
-    if(this.role == "taylor") {
-       if(!!this.user.firstname && !!this.user.lastname && !!this.user.municipality && !!this.user.email && !!this.user.adresse && !!this.user.password && !!this.user.tel && !!this.user.city && !!this.user.category && !!this.competencies && !!this.user.verificationPassword) {
-        return true
-       }
-       return false;
-    }else{
-      if(!!this.user.firstname && !!this.user.lastname && !!this.user.municipality && !!this.user.email && !!this.user.adresse && !!this.user.password && !!this.user.tel && !!this.user.city && !!this.user.verificationPassword) {
-        return true
-      }
-      return false;
-    }
-  }
-
-  //Methode de verification du mot de pass
   
 
 

@@ -40,11 +40,11 @@
 
                     <div class="row">
                         <div class="col-4 mb-2">
-                            <p-multiSelect [options]="cities" [(ngModel)]="selectedCity" formControlName="city" defaultLabel="--Ville" [selectionLimit]="1" [showHeader]="false" optionLabel="libelle"></p-multiSelect>
+                            <p-multiSelect [options]="cities" formControlName="city" defaultLabel="--Ville" [selectionLimit]="1" [showHeader]="false" optionLabel="libelle"></p-multiSelect>
                         </div>
                         
                         <div class="col-4 mb-2">
-                            <p-multiSelect [options]="municipalities" [(ngModel)]="selectedMunicipality" formControlName="municipality" defaultLabel="--Commune" [selectionLimit]="1" [showHeader]="false" optionLabel="libelle"></p-multiSelect>
+                            <p-multiSelect [options]="municipalities" formControlName="municipality" defaultLabel="--Commune" [selectionLimit]="1" [showHeader]="false" optionLabel="libelle"></p-multiSelect>
                         </div>
                         <div class="col-4 mb-2">
                             <input type="text" class="form-control" id="Adresse" formControlName="adresse"  placeholder="Adresse" required>
@@ -91,7 +91,7 @@
 
                                 <div class="row col-4">
                                     <div class="form-check">
-                                        <p-multiSelect [options]="competencies" [(ngModel)]="selectedCompetency" formControlName="competencies"  defaultLabel="--Competences" optionLabel="title"></p-multiSelect>
+                                        <p-multiSelect [options]="competencies"  formControlName="competencies"  defaultLabel="--Competences" optionLabel="title"></p-multiSelect>
                                     </div>
                                 </div>
                             </div>

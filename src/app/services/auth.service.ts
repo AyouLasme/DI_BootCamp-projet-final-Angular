@@ -16,7 +16,7 @@ export class AuthService {
 
 
   register(user: User) {
-    return this.apiRequestService.post({ endpoint: "/api/users/register", data: JSON.stringify(user) })
+    return this.apiRequestService.post({ endpoint: "/api/users", data: user })
   }
 
 

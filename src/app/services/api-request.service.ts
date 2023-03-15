@@ -12,12 +12,11 @@ export class ApiRequestService {
   }
 
   get(endpoint: string) {
+    console.log(endpoint);
     return this.http.get(`${environment.BASE_URL_API}${endpoint}`, {headers: this.httpHeader()});
   }
 
   post(parameter: Required<{ endpoint: string, data: any }>) {
-    console.log("endpoint "+parameter.endpoint);
-    console.log(parameter.data);
     
     return this.http.post(`${environment.BASE_URL_API}${parameter.endpoint}`, parameter.data, {headers: this.httpHeader()});
   }
