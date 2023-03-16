@@ -16,13 +16,13 @@
                 <td>{{demande.id}}</td>
                 <td>{{demande.object}}</td>
                 <td>
-                    <button>{{demande.statut}}</button>
+                    <div class="statut d-flex justify-content-center align-items-center pt-2"><p>{{demande.statut}}</p></div>
                 </td>
                 <td>{{demande.dateRetrait}}</td>
                 <td>
                     <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-success p-button-outlined  m-2" (click)="viewCommande(demande.id)"></button>
-                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-outlined  m-2"></button>
-                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined  m-2"></button>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-outlined  m-2" (click)="modificationCommand(demande.id)"></button>
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined  m-2" (click)="deleteOneCommand(demande.id) "></button>
                 </td>
             </tr>
         </ng-template>

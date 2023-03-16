@@ -5,6 +5,7 @@ import { DemandService } from 'src/app/services/demand.service';
 import { ReponseService } from '../../../services/reponse.service';
 import { Demand } from 'src/app/models/demand';
 import { Reponse } from '../../../models/reponse';
+import { id_ID } from 'ng-zorro-antd/i18n';
 
 @Component({
   selector: 'app-customer-historique-dmd',
@@ -50,6 +51,33 @@ export class CustomerHistoriqueDmdComponent implements OnInit{
    // Methode de recuperation des demandes
    public getAllDemand() {
     this.demandService.getAll().subscribe({
+      next: data => {
+        this.demandList = data as Demand[];
+      },
+      error: error => {
+        console.log(error);
+
+      }
+    })
+  }
+
+  // Methode de supression des demandes
+  public deleteOneCommand(id:Number) {
+    this.demandService.deleteCommand(id).subscribe({
+      next: data => {
+        this.demandList = data as Demand[];
+      },
+      error: error => {
+        console.log(error);
+
+      }
+    })
+  }
+
+
+  // Methode de modification des demandes
+  public modificationCommand(id:Number) {
+    this.demandService.updateCommande(id).subscribe({
       next: data => {
         this.demandList = data as Demand[];
       },
