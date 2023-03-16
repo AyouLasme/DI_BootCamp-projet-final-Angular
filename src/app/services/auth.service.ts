@@ -16,7 +16,14 @@ export class AuthService {
 
 
   register(user: User) {
-    return this.apiRequestService.post({ endpoint: "/api/users", data: user })
+    if (user.role === "Taylor") {
+      return this.apiRequestService.post({ endpoint: "/api/taylors", data: user })
+    }else if (user.role === "Customer") {
+      return this.apiRequestService.post({ endpoint: "/api/customers", data: user })
+    } else {
+      console.log("Erreur, le type de l'utilisateur est non connu!!");
+      return this.apiRequestService.post({ endpoint: "not-found", data: user })
+    }
   }
 
 

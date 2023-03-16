@@ -26,9 +26,10 @@ export class RegisterComponent implements OnInit{
   competencies: Competence[];
   
 
-
   public role: string;
   roleCouturierChecked: boolean = false
+
+
   constructor(
     private serviceUser: AuthService,
     private router: Router,
@@ -45,13 +46,17 @@ export class RegisterComponent implements OnInit{
   // Methode de recuperation des elements du register
   registerUser() {
     console.log(this.form.valid);
-    
     if(this.form.valid) {
       let data = this.form.value;
-      data.city = data.city[0];
-      data.municipality = data.municipality[0];
-      data.competencies = data.competencies[0];
-      console.log("form : ", data);
+      data.city = {id:data.city[0].id} ;
+      data.municipality = {id:data.municipality[0].id};
+      if(this.roleCouturierChecked){
+        let d = [];
+        data.competencies.forEach(e => {
+          d.push({id:e.id})
+        });
+        data.competencies = d;
+      }
       this.serviceUser.register(data as User).subscribe({
         next: data => {
           this.form.clearAsyncValidators();
