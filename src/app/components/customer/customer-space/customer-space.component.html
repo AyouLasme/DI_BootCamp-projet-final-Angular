@@ -1,40 +1,16 @@
 <section class="corps">
-
-
-    <header>
-        <nav class="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#" id="logotaylor">
-                    <img src="assets/imgs/LOGO/TAYLOR2.png" alt="Logo" class="d-inline-block align-text-top">
-                </a>
-
-                <div class="dropdown ms-auto me-4">
-                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>mdo</strong>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i>Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                    </ul>
-                </div>
-                <button class="btn btn-outline-light">Logout</button>
-            </div>
-        </nav>
-    </header>
-    <!-- Fin header -->
-
-
     <!-- Debut Sidebar -->
     <div class="container-fluid  ">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar2">
                 <div class="d-flex flex-column align-items-center align-items-sm-start text-white min-vh-100">
                     <ul class="nav nav-pills flex-column mb-sm-auto align-items-sm-start" id="menu">
+                        <li class="d-flex justify-content-center align-items-center">
+                            <a class="navbar-brand" href="#" id="logotaylor">
+                                <img src="assets/imgs/LOGO/TAYLOR2.png" alt="Logo"
+                                    class="d-inline-block align-text-top">
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link" [routerLink]="['demands-customer']"
                                 [routerLinkActive]="['active']">
@@ -81,11 +57,11 @@
                 </div>
             </div>
             <div class="col py-3">
-                <router-outlet></router-outlet>
+                <div class="container corpsContainer">
+                    <router-outlet></router-outlet>
+                </div>
             </div>
         </div>
     </div>
-
     <!-- Fin Sidebar -->
-
 </section>

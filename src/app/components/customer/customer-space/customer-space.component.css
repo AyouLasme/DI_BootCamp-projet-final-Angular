@@ -6,10 +6,6 @@
     z-index: 1000;
 } */
 
-header{
-    background-color: var(--yellow);
-}
-
 
 .shadow{
     background-color: var(--yellow) !important;
@@ -53,12 +49,20 @@ i{
 
 .sidebar2{
     background-color: var(--yellow);
+    top: 0;
+    position: fixed;
+    z-index: 1000;
 }
 
 .sidebar2 li{
     border-bottom: 1px solid white;
     width: 100%;
     
+}
+
+.corpsContainer{
+    margin-left: 200px;
+    width: 1050px;
 }
 
 

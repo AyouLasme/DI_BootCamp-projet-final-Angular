@@ -9,6 +9,9 @@ import { Municipality } from 'src/app/models/municipality';
 import { Reponse } from 'src/app/models/reponse';
 import { ReponseService } from 'src/app/services/reponse.service';
 import { HttpClient } from '@angular/common/http';
+import { Competence } from 'src/app/models/comeptence';
+import { CompetenceService } from 'src/app/services/competence.service';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @Component({
@@ -25,6 +28,8 @@ export class CustomerDemandComponent implements OnInit{
   selectedMunicipality: Municipality;
   reponses: Reponse[];
   reponse: Reponse;
+  competencies: Competence[];
+  dateRetrait : Date;
 
 
   constructor(
@@ -34,6 +39,7 @@ export class CustomerDemandComponent implements OnInit{
     private municipalityservice: MunicipalityService,
     private reponseService: ReponseService,
     private http: HttpClient,
+    private competenceService: CompetenceService
   
   ) {
     this.demand = new Demand();
@@ -41,35 +47,56 @@ export class CustomerDemandComponent implements OnInit{
   }
 
 
- 
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      object: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+      content: ['', [Validators.required]],
+      dateDmd:  ['', [Validators.required]],
+      dateRetrait: ['', [Validators.required]],
+      images: ['', [Validators.required]],
+      municipality: [Municipality, [Validators.required]],
+      sender: [sessionStorage.getItem("userId"), [Validators.required]],
+      competencies: ['', []],
+    });
+    this.getAllmunicipality();
+    this.getAllDemand();
+    //this.getAllReponse();
+    this.getAllCompetence();
+  }
 
-
-  // Methode de recuperation des elements du formulaire de publication
+// Methode d'enregistrement des commandes
   commandUser() {
-    let data = this.form.value;
-    data["statut"] = "Annonce";
-    data["sender"] = {id:parseInt(sessionStorage.getItem("userId"))};
-    console.log(data);
-    
-    data["municipality"] = {id:data.municipality[0].id};
-    console.log(data)
     if(this.form.valid) {
-      this.demandService.saveDemand(data as Demand).subscribe({
+      let data = this.form.value;
+      data["statut"] = "Annonce";
+      data["images"] = [];
+      data["sender"] = {id:parseInt(sessionStorage.getItem("userId"))};
+      data["receiver"] = {id: 1};
+      data.municipality = {id:data.municipality[0].id};
+      let d = [];
+        data.competencies.forEach(e => {
+          d.push({id:e.id})
+        });
+        data.competencies = d;
+        console.log(data);
+        this.demandService.saveDemand(data as Demand).subscribe({
         next: data => {
-          this.router.navigate(['/customer-space/'+ sessionStorage.getItem("userId") + '/historique-customer']);
+          this.form.clearAsyncValidators();
+          this.router.navigate(['/customer-space/'+ sessionStorage.getItem("userId") 
+          + '/historique-customer']);
         },
         error: error => {
           console.log(error);
-          alert(error.message)
         }
       })
     }else{
       console.log(
         this.invalidField()
       );
-      // alert("Veuillez renseigner tous les champs");
     }
   }
+
 
 
   invalidField(){
@@ -84,7 +111,7 @@ export class CustomerDemandComponent implements OnInit{
   }
 
 
-
+// Methode pour telecharger les images
   url;
   uploadFile(event:any) {
     let image = event.target.files[0];
@@ -110,7 +137,6 @@ export class CustomerDemandComponent implements OnInit{
       },
       error: error => {
         console.log(error);
-
       }
     })
   }
@@ -126,7 +152,6 @@ export class CustomerDemandComponent implements OnInit{
       },
       error: error => {
         console.log(error);
-
       }
     })
   }
@@ -142,7 +167,21 @@ export class CustomerDemandComponent implements OnInit{
       },
       error: error => {
         console.log(error);
+      }
+    })
+  }
 
+
+
+  // Methode de recupperation des competences
+  public getAllCompetence() {
+    this.competenceService.getAll().subscribe({
+      next: data => {
+        console.log(data);
+        this.competencies = data as Competence[];
+      },
+      error: error => {
+        console.log(error);
       }
     })
   }
@@ -150,20 +189,6 @@ export class CustomerDemandComponent implements OnInit{
 
 
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      object: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      content: ['', [Validators.required]],
-      dateDmd:  ['', [Validators.required]],
-      dateRetrait: ['', [Validators.required]],
-      imageModels: ['', [Validators.required]],
-      municipality: ['', [Validators.required]],
-      sender: [sessionStorage.getItem("userId"), [Validators.required]],
-    });
-    this.getAllmunicipality();
-    this.getAllDemand();
-    //this.getAllReponse();
-  }
+ 
   
 }

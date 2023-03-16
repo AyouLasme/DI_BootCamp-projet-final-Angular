@@ -36,6 +36,7 @@ import { CustomerHistoriqueDmdComponent } from './components/customer/customer-h
 import {TableModule} from 'primeng/table';
 import { CustomerViewCommandeComponent } from './components/customer/customer-view-commande/customer-view-commande.component';
 import { TaylorViewCommandeComponent } from './components/taylor/taylor-view-commande/taylor-view-commande.component';
+import { CalendarModule } from 'primeng/calendar';
 
 registerLocaleData(fr);
 
@@ -75,7 +76,8 @@ registerLocaleData(fr);
     HttpClientModule,
     MultiSelectModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    CalendarModule
     
   ],
   providers: [
