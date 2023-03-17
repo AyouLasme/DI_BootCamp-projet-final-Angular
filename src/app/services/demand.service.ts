@@ -7,6 +7,7 @@ import { Reponse } from '../models/reponse';
   providedIn: 'root'
 })
 export class DemandService {
+ 
   readonly API_URL = "http://localhost:8081";
 
   constructor(private apiRequestService: ApiRequestService) { }
@@ -28,6 +29,11 @@ export class DemandService {
 
   updateCommande(data : any){
     return this.apiRequestService.put({ endpoint: 'api/demandes', data : data});
+  }
+
+   
+  getDemandByMunicipality(id:Number) {
+    return this.apiRequestService.get('/api/demandes/municipality/' + id);
   }
 
 }

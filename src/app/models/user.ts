@@ -14,11 +14,11 @@ export class User {
     galery: string;
     isActive: boolean;
     city: string;
-    municipality:string;
+    municipality:any;
     competencies: number[];
     verificationPassword: String;
 
-    constructor(id = 0, firstname = "", lastname = "", email = "", tel = "", password = "", adresse = "", role = "", isAdmin = false, sexe = "", category = "", galery = "", isActive = false,city = "", municipality = "", competencies = [], verificationPassword ="") {
+    constructor(id = 0, firstname = "", lastname = "", email = "", tel = "", password = "", adresse = "", role = "", isAdmin = false, sexe = "", category = "", galery = "", isActive = false,city = "", municipality ={}, competencies = [], verificationPassword ="") {
         this.id = id;
         this.firstname = firstname;
         this.lastname= lastname;

@@ -1,13 +1,12 @@
 
 <h1>Liste des commandes</h1>
 <div class="card">
-    <p-table [value]="" [tableStyle]="{'min-width': '50rem'}">
+    <p-table [value]="demandList" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th>ref</th>
                 <th>Objet</th>
                 <th>description</th>
-                <th>image</th>
                 <th>Date de retrait</th>
                 <th>Statut</th>
                 <th>Action</th>
@@ -17,12 +16,11 @@
             <tr>
                 <td>{{demande.id}}</td>
                 <td>{{demande.object}}</td>
-                <td>Description</td>
+                <td>{{demande.content}}</td>
+                <td>{{demande.dateRetrait}}</td>
                 <td>
                     <button>{{demande.statut}}</button>
                 </td>
-                <td>{{demande.dateRetrait}}</td>
-                <th>Statut</th>
                 <td>
                     <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-success p-button-outlined  m-2">Valider</button>
                     <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined  m-2">Annuler</button>

@@ -9,9 +9,9 @@ import { ApiRequestService } from './api-request.service';
 })
 export class AuthService {
 
+  public logedUser: User;
   API_URL = 'http://localhost:8081';
   constructor(private apiRequestService: ApiRequestService) {
-
   }
 
 
@@ -29,7 +29,6 @@ export class AuthService {
 
 
   getUser(connexionData: { email: String, password: String }) {
-
     return this.apiRequestService.post({ endpoint: '/api/users/login', data: JSON.stringify(connexionData) });
   }
 

@@ -21,6 +21,7 @@ export class LoginComponent {
       next: data =>{
         console.log(data);
         this.user = data as User;
+        this.serviceUser.logedUser = data as User;
         switch (this.user.role.toLowerCase()) {
           case 'customer':
             sessionStorage.setItem("userId", this.user.id  + "");
