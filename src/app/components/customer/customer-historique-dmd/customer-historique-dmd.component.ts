@@ -88,9 +88,12 @@ export class CustomerHistoriqueDmdComponent implements OnInit{
     })
   }
 
+  
+
 
   //methode de vue des commandes
-  viewCommande($commandId){
-    this.router.navigate(['customer-space',sessionStorage.getItem("userId"), 'command-view', $commandId])
+  viewCommande(command){
+    this.demandService.selectedDemand = command;
+    this.router.navigate(['customer-space',sessionStorage.getItem("userId"), 'command-view', command.id])
   }
 }

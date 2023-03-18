@@ -185,10 +185,5 @@ export class CustomerDemandComponent implements OnInit{
       }
     })
   }
-
-
-
-
- 
   
 }

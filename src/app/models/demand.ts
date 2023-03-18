@@ -16,9 +16,10 @@ export class Demand {
     statut: string;
     competencies: any[];
     reponses: any[];
+    receiver: any
  
 
-    constructor(id = 0, object = "", content = "", dateRetrait = "", dateDmd = "", images = [], municipality : any = {}, sender : any= {}, category = "",statut = "", competencies = [], reponses= []){
+    constructor(id = 0, object = "", content = "", dateRetrait = "", dateDmd = "", images = [], municipality : any = {}, sender : any= {}, category = "",statut = "", competencies = [], reponses= [], receiver: any = {}){
         this.id = id;
         this.object = object;
         this.content = content;
@@ -31,5 +32,6 @@ export class Demand {
         this.statut = statut;
         this.competencies = competencies;
         this.reponses = reponses;
+        this.receiver = receiver;
     }
 }

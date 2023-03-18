@@ -10,6 +10,8 @@ export class DemandService {
  
   readonly API_URL = "http://localhost:8081";
 
+  public selectedDemand: Demand;
+
   constructor(private apiRequestService: ApiRequestService) { }
 
   saveDemand(demand: Demand) {

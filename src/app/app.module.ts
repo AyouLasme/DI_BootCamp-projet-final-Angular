@@ -37,6 +37,9 @@ import {TableModule} from 'primeng/table';
 import { CustomerViewCommandeComponent } from './components/customer/customer-view-commande/customer-view-commande.component';
 import { TaylorViewCommandeComponent } from './components/taylor/taylor-view-commande/taylor-view-commande.component';
 import { CalendarModule } from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import {DialogModule} from 'primeng/dialog';
 
 registerLocaleData(fr);
 
@@ -77,11 +80,13 @@ registerLocaleData(fr);
     MultiSelectModule,
     ButtonModule,
     TableModule,
-    CalendarModule
-    
+    CalendarModule,
+    ToastModule,
+    DialogModule  
   ],
   providers: [
-    { provide: NZ_I18N, useValue: fr_FR }
+    { provide: NZ_I18N, useValue: fr_FR },
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

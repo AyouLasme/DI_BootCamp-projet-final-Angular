@@ -1,31 +1,62 @@
+<section>
+    <h1>Liste des commandes</h1>
+    <div class="card">
+        <p-table [value]="demandList" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>ref</th>
+                    <th>Objet</th>
+                    <th>description</th>
+                    <th>Date de retrait</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-demande let-columns="columns">
+                <tr>
+                    <td>{{demande.id}}</td>
+                    <td>{{demande.object}}</td>
+                    <td>{{demande.content}}</td>
+                    <td>{{demande.dateRetrait}}</td>
+                    <td>
+                        <div class="statut d-flex justify-content-center align-items-center pt-2">
+                            <p>{{demande.statut}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <button pButton pRipple type="button" icon="pi pi-check"
+                            class="p-button-rounded p-button-success p-button-outlined m-2"
+                            (click)="selectCommand(demande)" data-bs-toggle="modal" data-bs-target="#myModal"></button>
+                        <button pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded p-button-danger p-button-outlined  m-2"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 
-<h1>Liste des commandes</h1>
-<div class="card">
-    <p-table [value]="demandList" [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th>ref</th>
-                <th>Objet</th>
-                <th>description</th>
-                <th>Date de retrait</th>
-                <th>Statut</th>
-                <th>Action</th>
-            </tr>
+
+    <p-dialog [(visible)]="displayModal" header="Faites votre proposition" [modal]="true" [style]="{width: '30vw'}"
+        [maximizable]="false" [draggable]="false" [resizable]="false">
+        <form [formGroup]="form">
+            <div class="form-control m-2">
+                <label for="prix">Prix</label>
+                <input type="text" formControlName="prixOffre" class="form-control" id="prix">
+            </div>
+            <div class="form-control m-2">
+                <label for="dateOffre" class="form-label">Date et heure du retrait</label>
+                <input type="datetime-local" formControlName="dateOffre" class="form-control" id="dateOffre"
+                    required>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <div class="modal-footer">
+                <button type="submit" (click)="registerOffre()" class="btn btn-primary btnSubmit">Envoyer</button>
+            </div>
         </ng-template>
-        <ng-template pTemplate="body" let-demande let-columns="columns">
-            <tr>
-                <td>{{demande.id}}</td>
-                <td>{{demande.object}}</td>
-                <td>{{demande.content}}</td>
-                <td>{{demande.dateRetrait}}</td>
-                <td>
-                    <button>{{demande.statut}}</button>
-                </td>
-                <td>
-                    <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-success p-button-outlined  m-2">Valider</button>
-                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined  m-2">Annuler</button>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+    </p-dialog>
+</section>
+
+
+
+<p-toast position="top-center" key="reponseSent"></p-toast>

@@ -1,0 +1,9 @@
+.statut{
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+}
+
+.btnSubmit{
+    background-color: var(--yellow);
+    border: 1px solid var(--yellow);
+}

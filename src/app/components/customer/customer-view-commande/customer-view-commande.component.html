@@ -1,28 +1,55 @@
-<h1>Liste des demandes</h1>
-<div class="card">
-    <p-table [value]="" [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th>Nom</th>
-                <th>Categorie</th>
-                <th>Prix</th>
-                <th>Date de retrait</th>
-                <th>Action</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-columns="columns">
-            <tr>
-                <td></td>
-                <td></td>
-                <td>
-                    <button></button>
-                </td>
-                <td></td>
-                <td>
-                    <button pButton pRipple type="button" icon="pi pi-comment" class="p-button-rounded p-button-info p-button-outlined  m-2"></button>
-                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-outlined  m-2"></button>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+<section>
+    <div>
+        <h3 class="text-center">Detail de la commande</h3>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Objet de la commande</td>
+                    <td>{{demand.object}}</td>
+                </tr>
+                <tr>
+                    <td>Date de la demande</td>
+                    <td>{{demand.dateDmd}}</td>
+                </tr>
+                <tr>
+                    <td>Date de retrait souhaitée</td>
+                    <td>{{demand.dateRetrait}}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{demand.content}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br><br>
+    <div>
+        <h3 class="text-center">Liste des Reponses</h3>
+        <div class="card">
+            <p-table [value]="demand.reponses" [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th>Couturier</th>
+                        <th>Prix</th>
+                        <th>Date de retrait</th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-reponse let-columns="columns">
+                    <tr>
+                        <td>{{reponse.sender.firstname}} {{reponse.sender.lastname}}</td>
+                        <td>{{reponse.prixOffre}}</td>
+                        <td>{{reponse.dateOffre}}</td>
+                        <td>
+                            <button pButton pRipple type="button" icon="pi pi-comment"
+                                class="p-button-rounded p-button-info p-button-outlined  m-2"></button>
+                            <button pButton pRipple type="button" icon="pi pi-check"
+                                class="p-button-rounded p-button-success p-button-outlined m-2" (click)="validerCommand(reponse)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</section>
