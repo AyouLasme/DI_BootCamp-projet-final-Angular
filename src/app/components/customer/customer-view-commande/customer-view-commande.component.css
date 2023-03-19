@@ -1,3 +1,36 @@
 .table tr, td{
     border: 2px solid var(--yellow);
 }
+
+.contenuMessage{
+    position: relative;
+    height: 100%;
+}
+
+.imageAvatar{
+    width: 45px;
+    height: 100%;
+}
+
+.pmessage{
+    background-color: #f5f6f7;
+}
+
+.Annonce{
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+}
+
+.Traitement{
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.Fini{
+    border: 1px solid var(--blue);
+    color: var(--blue);
+}
+
+/* .session-body{
+    background-color: #eee;
+} */

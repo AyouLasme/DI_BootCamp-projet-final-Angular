@@ -20,7 +20,6 @@ import {CalendarModule} from 'primeng/calendar';
   styleUrls: ['./customer-demand.component.css'],
 })
 export class CustomerDemandComponent implements OnInit{
- 
   form: FormGroup;
   demand: Demand;
   demandList: Demand[];
@@ -30,7 +29,6 @@ export class CustomerDemandComponent implements OnInit{
   reponse: Reponse;
   competencies: Competence[];
   dateRetrait : Date;
-
 
   constructor(
     private demandService: DemandService,
@@ -80,6 +78,7 @@ export class CustomerDemandComponent implements OnInit{
         });
         data.competencies = d;
         console.log(data);
+        return 
         this.demandService.saveDemand(data as Demand).subscribe({
         next: data => {
           this.form.clearAsyncValidators();

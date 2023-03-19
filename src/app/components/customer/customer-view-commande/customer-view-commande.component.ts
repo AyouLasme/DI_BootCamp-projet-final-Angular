@@ -16,6 +16,7 @@ export class CustomerViewCommandeComponent {
   demandList: Demand[];
   reponses: Reponse[];
   reponse: Reponse;
+  displayModal: boolean = false;
   constructor(
     private demandService: DemandService,
     private router: Router,
@@ -46,10 +47,48 @@ export class CustomerViewCommandeComponent {
   }
 
 
-  // Methode de validation d'une commande
+  // // Methode de validation d'une commande
+  // validerCommand(reponse) {
+  //   this.demand.receiver = { id: reponse.sender.id };
+  //   this.demand.statut = "Traitement";
+  //   console.log(this.demand)
+  //   this.demandService.updateCommande(this.demand).subscribe({
+  //     next: data => {
+  //       this.demand = data as Demand;
+  //     },
+  //     error: error => {
+  //       console.log(error);
+
+  //     }
+  //   });
+  // }
+
   validerCommand(reponse) {
-    this.demand.receiver = {id:reponse.sender.id};
+    this.demand.receiver = { id: reponse.sender.id };
     this.demand.statut = "Traitement";
+    console.log(this.demand);
+    this.demandService.updateCommande(this.demand).subscribe(
+      data => {
+        this.demand = data as Demand;
+        console.log("Commande validée avec succès !");
+      },
+      error => {
+        console.log(error);
+        console.log("Erreur lors de la validation de la commande !");
+      }
+    );
+  }
+  
+
+
+  viewMessage() {
+    this.displayModal = true;
+  }
+
+
+  // Methode pour terminer la commande
+  terminerCommand() {
+    this.demand.statut = "Fini";
     console.log(this.demand)
     this.demandService.updateCommande(this.demand).subscribe({
       next: data => {
@@ -57,12 +96,19 @@ export class CustomerViewCommandeComponent {
       },
       error: error => {
         console.log(error);
-
       }
     });
   }
 
+
+
+
+
+
+
+
 }
+
 
 
 

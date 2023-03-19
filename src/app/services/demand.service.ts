@@ -17,7 +17,7 @@ export class DemandService {
   saveDemand(demand: Demand) {
     return this.apiRequestService.post({ 
       endpoint: '/api/demandes', data: demand
-     })
+     });
   }
 
   getAll() {

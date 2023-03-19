@@ -22,6 +22,7 @@ export class TaylorDemandComponent implements OnInit{
   reponse: Reponse;
   selectedCommand: Demand;
   displayModal:boolean = false;
+  firstReponse:boolean = true;
 
   constructor(
     private demandService: DemandService,
@@ -69,9 +70,29 @@ export class TaylorDemandComponent implements OnInit{
 
   }
 
+  selectMessage(){
+    this.displayModal = true;
+  }
+
    //Methode de recuperation des elements du formulaire de l'offre
   registerOffre(){
-    if(this.form.valid) {
+    this.reponseService.getByDemandeSender(this.selectedCommand.id, parseInt(sessionStorage.getItem("userId"))).subscribe({
+      next: data => {
+        let d = data as any[];
+        if (d.length == 0) {
+          this.firstReponse = true;
+        }else{
+          this.firstReponse = false;
+          this.messageService.add({key: 'firstReponse', severity:'warn', summary: 'Reponse déjà envoyée', detail: 'Vous avez déjà repondu à cette demande.'})
+        }
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
+
+
+    if(this.form.valid && this.firstReponse) {
       this.displayModal = false;
       let data = this.form.value;
       data.sender = {id:parseInt(sessionStorage.getItem("userId"))};

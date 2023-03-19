@@ -1,4 +1,14 @@
-.statut{
+.Annonce{
     border: 1px solid var(--yellow);
     color: var(--yellow);
+}
+
+.Traitement{
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.Fini{
+    border: 1px solid var(--blue);
+    color: var(--blue);
 }
